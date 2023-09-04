@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 
 @Injectable({
@@ -8,7 +8,9 @@ import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 })
 export class UserService {
   url = environment.apiUrl;
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(private httpClient: HttpClient) {
+  }
 
   // tslint:disable-next-line:typedef
   signup(data: any) {
@@ -17,23 +19,23 @@ export class UserService {
     });
   }
 
-  forgotPassword(data: any){
+  forgotPassword(data: any) {
     return this.httpClient.post(this.url + '/user/forgotPassword/', data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
 
-  login(data: any){
+  login(data: any) {
     return this.httpClient.post(this.url + '/user/login/', data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
 
-  checkToken(){
+  checkToken() {
     return this.httpClient.get(this.url + '/user/checkToken/');
   }
 
-  changePassword(data:any){
+  changePassword(data: any) {
     return this.httpClient.post(this.url + '/user/changePassword/', data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
