@@ -19,7 +19,6 @@ import {NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION} from 'ngx-ui-loader'
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {LoginComponent} from './login/login.component';
 import {TokenInterceptorInterceptor} from './services/token-interceptor.interceptor';
-import {CategoryComponent} from './services/category/category.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -41,8 +40,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AppSidebarComponent,
     SignupComponent,
     ForgotPasswordComponent,
-    LoginComponent,
-    CategoryComponent
+    LoginComponent
    ],
   imports: [
     BrowserModule,

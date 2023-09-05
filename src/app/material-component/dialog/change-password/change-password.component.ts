@@ -34,7 +34,7 @@ export class ChangePasswordComponent implements OnInit {
     if (this.changePasswordForm.controls['newPassword'].value !== this.changePasswordForm.controls['confirmPassword'].value) {
       return true;
     } else {
-      return false;
+      return true;
     }
   }
 
