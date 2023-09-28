@@ -38,7 +38,7 @@ export class CategoryComponent implements OnInit {
     if (this.dialogAction === 'Edit') {
       this.edit();
     } else {
-
+      this.add();
     }
   }
 
@@ -65,26 +65,31 @@ export class CategoryComponent implements OnInit {
   }
 
   edit() {
-    var formData = this.categoryForm.value;
-    var data = {
+    const formData = this.categoryForm.value;
+    const data = {
       id: this.dialogData.data.id,
-      name: formData.name
+      name: formData.name,
     };
-    this.categoryService.update(data).subscribe((response: any) => {
+
+    this.categoryService.update(data).subscribe(
+      (response: any) => {
         this.dialogRef.close();
         this.onEditCategory.emit();
         this.responseMessage = response.message;
         this.snackbarService.openSnackBar(this.responseMessage, 'success');
-      }, (error) => {
+      },
+      (error) => {
+        console.error('An error occurred:', error); // Log the error for debugging.
         this.dialogRef.close();
+
         if (error.error?.message) {
           this.responseMessage = error.error?.message;
         } else {
           this.responseMessage = GlobalConstants.genericError;
         }
+
         this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
       }
     );
   }
-
 }
